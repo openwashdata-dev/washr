@@ -28,9 +28,18 @@ setup_rawdata <- function(){
     package = "washr"
   )
   # Post a github issue to upload raw data
-  gh::gh(
-    endpoint = paste0("POST openwashdata/", name, "/issues/"),
-    title = "Add raw data for data-raw folder",
-    body = "TODO"
+  # gh::gh(
+  #   endpoint = paste0("POST openwashdata/", name, "/issues/"),
+  #   title = "Add raw data for data-raw folder",
+  #   body = "TODO"
+  # )
+
+  # Create an empty dictionary
+  usethis::use_template(
+    "dictionary.csv",
+    save_as = fs::path("data-raw", "dictionary", ext = "csv"),
+    ignore = FALSE,
+    open = FALSE,
+    package = "washr"
   )
 }
