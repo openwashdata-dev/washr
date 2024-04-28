@@ -34,12 +34,9 @@ setup_rawdata <- function(){
   #   body = "TODO"
   # )
 
-  # Create an empty dictionary
-  usethis::use_template(
-    "dictionary.csv",
-    save_as = fs::path("data-raw", "dictionary", ext = "csv"),
-    ignore = FALSE,
-    open = FALSE,
-    package = "washr"
-  )
+  # Create empty dictionary file
+  dict_path <- fs::path("data-raw", "dictionary", ext = "csv")
+  file.create(dict_path)
+  writeLines(text = "directory,file_name,variable_name,variable_type,description",
+             con = dict_path)
 }
