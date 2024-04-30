@@ -13,6 +13,7 @@
 #' @examples
 #' \dontrun{
 #' setup_rawdata()
+#' # Select "yes" or similar option to override the data_processing.R file
 #' }
 #'
 setup_rawdata <- function(){
@@ -27,19 +28,11 @@ setup_rawdata <- function(){
     open = rlang::is_interactive(),
     package = "washr"
   )
+
   # Post a github issue to upload raw data
   # gh::gh(
   #   endpoint = paste0("POST openwashdata/", name, "/issues/"),
   #   title = "Add raw data for data-raw folder",
   #   body = "TODO"
   # )
-
-  # Create an empty dictionary
-  usethis::use_template(
-    "dictionary.csv",
-    save_as = fs::path("data-raw", "dictionary", ext = "csv"),
-    ignore = FALSE,
-    open = FALSE,
-    package = "washr"
-  )
 }
