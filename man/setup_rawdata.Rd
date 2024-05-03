@@ -16,6 +16,7 @@ The templates assumes the dataset name is the same with the data package name.
 \examples{
 \dontrun{
 setup_rawdata()
+# Select "yes" or similar option to override the data_processing.R file
 }
 
 }

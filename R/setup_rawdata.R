@@ -13,6 +13,7 @@
 #' @examples
 #' \dontrun{
 #' setup_rawdata()
+#' # Select "yes" or similar option to override the data_processing.R file
 #' }
 #'
 setup_rawdata <- function(){
@@ -27,6 +28,7 @@ setup_rawdata <- function(){
     open = rlang::is_interactive(),
     package = "washr"
   )
+
   # Post a github issue to upload raw data
   # gh::gh(
   #   endpoint = paste0("POST openwashdata/", name, "/issues/"),
