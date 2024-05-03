@@ -14,12 +14,14 @@
 #' \dontrun{
 #' update_description()
 #' }
+#'
 update_description <- function(file = ".", github_user = "https://github.com/openwashdata/"){
   pkgname <- desc::desc_get("Package", file = file)[[1]]
   # author
 
   # license
   # usethis::use_ccby_license()
+
   # language
   desc::desc_set("Language", "en-GB", file = file)
   # depends
