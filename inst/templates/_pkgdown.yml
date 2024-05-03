@@ -1,0 +1,28 @@
+
+url: https://github.com/openwashdata/{{{name}}}
+template:
+  bootstrap: 5
+  includes:
+    in_header: |
+      <script defer data-domain="openwashdata.github.io" src="https://plausible.io/js/script.js"></script>
+
+home:
+  links:
+    - icon: github
+      text: GitHub repository
+      href: https://github.com/openwashdata/{{{name}}}
+  sidebar:
+    structure: [links, citation, authors, dev, custom]
+    components:
+      custom:
+        title: Funding
+        text: This project was funded by the [Open Research Data Program of the ETH Board](https://ethrat.ch/en/eth-domain/open-research-data/).
+
+authors:
+  footer:
+    roles: [cre, fnd]
+    text: "Crafted by"
+  sidebar:
+    roles: [cre, aut, ctb]
+    before: "So *who* does the work?"
+    after: "Thanks all!"
