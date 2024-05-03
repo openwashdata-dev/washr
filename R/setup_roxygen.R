@@ -20,30 +20,64 @@
 #'
 #'
 
-generate_roxygen_docs <- function(input_file_path, output_file_path, df_name = NULL) {
+setup_roxygen <- function(input_file_path, df_name) {
   # Read input CSV file
   dict <- read.csv(input_file_path)
   # Check if df_name is provided and not NULL, then filter input_df
-  if (!is.null(df_name)) {
-    library(dplyr)
-    dict <- dplyr::filter(dict, file_name == paste0(df_name, ".rda"))
-    # Update output_file_path to have the same name as df_name with .R extension
-    output_file_path <- paste0("R/", df_name, ".R")
+  dict <- dplyr::filter(dict, file_name == paste0(df_name, ".rda"))
+  # Update output_file_path to have the same name as df_name with .R extension
+  output_file_path <- fs::path("R", df_name, ext = "R")
+
+  if (file.exists(output_file_path)) {
+    head <- get_roxygen_head(output_file_path)
+  } else {
+    head <- create_roxygen_head(df_name)
   }
+  body <- create_roxygen_body(dict)
+  output <- c(head, body)
+  # Label dataset
+  output <-c(output, paste0('"', df_name, '"'))
+  # Write output to file
+  writeLines(output, output_file_path)
+}
 
-  # Initialize output character vector
-  output <- character()
+create_roxygen_head <- function(df_name) {
   # Create title and description
-  output <- c(output, paste0("#' ", df_name, ": Title goes here"),
+  roxygen_head <- c(paste0("#' ", df_name, ": Title goes here"),
               "#' ",
-              "#' Description of the data goes here...")
+              "#' Description of the data goes here...",
+              "#' ")
+  return(roxygen_head)
+}
 
+get_roxygen_head <- function(roxygen_file_path){
+  roxygen_head <- character()
+  roxygen_text <- readLines(roxygen_file_path)
+  i <- 1
+  line <- roxygen_text[1]
+  while (!startsWith(line, prefix = "#' @format")) {
+    output <- c(roxygen_head, roxygen_text[i])
+    i <- i+1
+    line <- roxygen_text[i]
+  }
+  return(roxygen_head)
+}
+
+create_roxygen_body <- function(dict){
   # Create format line
-  n_rows <- NA
-  n_vars <- NA
-  output <- c(output, paste0("#' @format A tibble with ", n_rows,"rows and ", n_vars," variables"))
+  n_rows <- NA #TODO: Load the data object
+  n_vars <- nrow(dict)
+  format_line <- paste0("#' @format A tibble with ", n_rows,"rows and ", n_vars," variables")
+
   # Create \describe block
-  output <- c(output, paste0("#' ", "\\describe{"))
+  block <- create_describe_block(dict)
+  output <- c(format_line, block)
+  return(output)
+}
+
+create_describe_block <- function(dict){
+  block <- character()
+  block <- c(block, paste0("#' ", "\\describe{"))
 
   # Iterate over input rows and create \item blocks
   for (i in seq_len(nrow(dict))) {
@@ -54,15 +88,11 @@ generate_roxygen_docs <- function(input_file_path, output_file_path, df_name = N
     item <- paste0("#'   ", "\\item{", variable_name, "}{", description, "}")
 
     # Append to output
-    output <- c(output, item)
+    block <- c(block, item)
   }
 
   # Close \describe block
-  output <- c(output, "#' }")
-
-  # Label dataset
-  output <-c(output, paste0('"', df_name, '"'))
-
-  # Write output to file
-  writeLines(output, output_file_path)
+  block <- c(block, "#' }")
+  return(block)
 }
+
