@@ -14,3 +14,9 @@ Imports:
     fs (>= 1.6.3),
     rlang (>= 1.1.3),
     usethis (>= 2.2.3)
+Language: en-GB
+LazyData: true
+Config/Needs/website: rmarkdown
+Date: 2024-05-03
+URL: https://github.com/openwashdata/washr
+BugReports: https://github.com/openwashdata/washr/issues
