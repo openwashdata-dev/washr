@@ -26,3 +26,4 @@ BugReports: https://github.com/openwashdata/washr/issues
 Suggests: 
     testthat (>= 3.2.1),
     withr (>= 3.0.0)
+Config/testthat/edition: 3
