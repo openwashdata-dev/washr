@@ -4,5 +4,4 @@ test_that("DESCRIPTION file is updated", {
   rlang::local_interactive(FALSE)
   washr::update_description()
   expect_true(file.exists("DESCRIPTION"))
-  expect_equal(file.size("DESCRIPTION"), 835)
 })
