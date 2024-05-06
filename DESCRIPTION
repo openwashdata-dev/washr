@@ -24,3 +24,5 @@ Config/Needs/website: rmarkdown
 Date: 2024-05-06
 URL: https://github.com/openwashdata/washr
 BugReports: https://github.com/openwashdata/washr/issues
+Suggests: 
+    testthat (>= 3.2.1)

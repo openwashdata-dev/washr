@@ -8,15 +8,12 @@ setup_rawdata()
 }
 \description{
 \code{setup_rawdata()} creates a directory for raw data and an example script
-\code{data_processing.R} for exporting the processed data. It will ask to override
-an empty \code{data_processing.R} generated when first creating the directory,
-please choose to override it for openwashdata dataset package development.
-The templates assumes the dataset name is the same with the data package name.
+named \code{data_processing.R} for importing, processing and exporting the tidy data.
+The template assumes that the dataset name is the same as the data package name.
 }
 \examples{
 \dontrun{
 setup_rawdata()
-# Select "yes" or similar option to override the data_processing.R file
 }
 
 }
