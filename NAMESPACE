@@ -3,4 +3,5 @@
 export(generate_roxygen_docs)
 export(setup_dictionary)
 export(setup_rawdata)
+export(setup_roxygen)
 export(update_description)

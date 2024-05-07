@@ -1,3 +1,27 @@
+#' Set up roxygen documentation for all tidy datasets with the dictionary
+#'
+#'
+#'
+#' @param df_name
+#'
+#' @return
+#' @export
+#'
+#' @examples
+#'
+setup_roxygen <- function(df_name) {
+  input_file_path <- fs::path(getwd(), "R")
+  if (!dir.exists(input_file_path)) {
+    usethis::use_r(open = FALSE)
+  }
+  # Update output_file_path to have the same name as df_name with .R extension
+  output_file_path <- fs::path("R", df_name, ext = "R")
+
+  generate_roxygen_docs(input_file_path = input_file_path,
+                        output_file_path = output_file_path,
+                        df_name = df_name)
+}
+
 #' Generate roxygen2 documentation from a CSV file
 #'
 #' This function takes a CSV table with columns `variable_name` and `description` as input,
@@ -18,16 +42,12 @@
 #' generate_roxygen_docs("example.csv", "output.R", df_name = "specific_variable")
 #' }
 #'
-#'
-
-setup_roxygen <- function(input_file_path, df_name) {
+generate_roxygen_docs <- function(input_file_path, output_file_path, df_name){
   # Read input CSV file
   dict <- read.csv(input_file_path)
+  ## If an empty csv should quit with error: Cannot generate roxygen file with an empty dictionary
   # Check if df_name is provided and not NULL, then filter input_df
   dict <- dplyr::filter(dict, file_name == paste0(df_name, ".rda"))
-  # Update output_file_path to have the same name as df_name with .R extension
-  output_file_path <- fs::path("R", df_name, ext = "R")
-
   if (file.exists(output_file_path)) {
     head <- get_roxygen_head(output_file_path)
   } else {

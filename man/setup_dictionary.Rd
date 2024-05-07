@@ -6,19 +6,23 @@
 \usage{
 setup_dictionary(
   dict_dir = "data-raw",
-  dict_name = "dictionary.csv",
+  dict_name = "dictionary",
   data_dir = "data"
 )
 }
 \arguments{
-\item{dict_dir}{Path to the dictionary directory, default to data-raw/}
+\item{dict_dir}{Path to the dictionary directory. Defaults to data-raw/}
 
-\item{dict_name}{File name of the dictionary, default to dictionary.csv}
+\item{dict_name}{File name of the dictionary. Defaults to dictionary.csv}
 
-\item{data_dir}{Path to the directory of the tidy R data objects, default to data/}
+\item{data_dir}{Path to the directory of the tidy R data objects. Defaults to data/}
 }
 \description{
-A short description...
+The function creates and fills in a dictionary csvfile for tidy datasets in
+data/ directory. The dictionary csvfile contains 5 variables: directory,
+file_name, var_name, var_type, and description. If tidy data exists, the dictionary
+is filled with the directory information, (data) file names, variable names,
+and variable types; otherwise, it only creates a dictionary csvfile with empty columns.
 }
 \examples{
 \dontrun{
