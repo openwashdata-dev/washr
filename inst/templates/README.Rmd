@@ -43,6 +43,15 @@ You can install the development version of {{{packagename}}} from
 devtools::install_github("openwashdata/{{{packagename}}}")
 ```
 
+```{r}
+library(dplyr)
+library(knitr)
+library(readr)
+library(stringr)
+library(gt)
+library(kableExtra)
+```
+
 Alternatively, you can download the individual datasets as a CSV or XLSX
 file from the table below.
 
