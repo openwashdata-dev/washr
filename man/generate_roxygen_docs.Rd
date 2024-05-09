@@ -4,7 +4,7 @@
 \alias{generate_roxygen_docs}
 \title{Generate roxygen2 documentation from a CSV file}
 \usage{
-generate_roxygen_docs(input_file_path, output_file_path, df_name)
+generate_roxygen_docs(input_file_path, output_file_path, df_name = NULL)
 }
 \arguments{
 \item{input_file_path}{Path to the input CSV file.}

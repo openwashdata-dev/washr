@@ -4,11 +4,16 @@
 \alias{setup_roxygen}
 \title{Set up roxygen documentation for all tidy datasets with the dictionary}
 \usage{
-setup_roxygen(df_name)
-}
-\arguments{
-\item{df_name}{}
+setup_roxygen()
 }
 \description{
 Set up roxygen documentation for all tidy datasets with the dictionary
+}
+\examples{
+\dontrun{
+setup_dictionary()
+# Go to data-raw/dictionary.csv and complete column description.
+setup_roxygen()
+}
+
 }

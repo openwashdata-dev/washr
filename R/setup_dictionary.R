@@ -1,15 +1,11 @@
-#' Set up and fill in the dictionary file based on tidy data information
+#' Set up a dictionary file in raw data directory
 #'
 #' @description
 #' The function creates and fills in a dictionary csvfile for tidy datasets in
 #' data/ directory. The dictionary csvfile contains 5 variables: directory,
 #' file_name, var_name, var_type, and description. If tidy data exists, the dictionary
-#' is filled with the directory information, (data) file names, variable names,
+#' will be filled with the directory information, (data) file names, variable names,
 #' and variable types; otherwise, it only creates a dictionary csvfile with empty columns.
-#'
-#' @param dict_dir Path to the dictionary directory. Defaults to data-raw/
-#' @param dict_name File name of the dictionary. Defaults to dictionary.csv
-#' @param data_dir Path to the directory of the tidy R data objects. Defaults to data/
 #'
 #' @export
 #'
@@ -20,34 +16,68 @@
 #' setup_dictionary()
 #' }
 #'
-setup_dictionary <- function(dict_dir = "data-raw", dict_name = "dictionary", data_dir = "data") {
-  # Check dictionary exists
-  dict_path <- fs::path(dict_dir, dict_name, ext = "csv")
-  if(!file.exists(dict_path)){
-    # Create empty dictionary csvfile
-    create_empty_dict(dict_path)
+setup_dictionary <- function() {
+  # Check working directory
+  has_dataraw <- "data-raw" %in% list.files(getwd())
+  correct_wd <- "DESCRIPTION" %in% list.files(getwd()) && "NAMESPACE" %in% list.files(getwd())
+  if(correct_wd) {
+    if(!has_dataraw){
+      usethis::ui_stop("You have not set up the raw data.
+                        Consider to run setup_rawdata() and import raw data files first.")
+    }
   } else {
-    # Warn if the user wants to override the dictionary if more than one row
-    stop(paste("The file", dict_path, "already exists."))
+    usethis::ui_stop("You are not in the correct working directory for developing the data package.
+                          Please check your working directory.")
   }
-  # Check tidy dataset exists
+  # Check dictionary csvfile existence
+  dict_path <- fs::path("data-raw", "dictionary", ext = "csv")
+  if(no_dict(dict_path)){
+    fill_dictionary(data_dir = "data", dict_path)
+  } else {
+    usethis::ui_stop(paste("The dictionary csvfile", dict_path, "already exists!"))
+    #TODO: choose to override
+  }
+}
+
+#' Fill in the dictionary file based on the tidy data information
+#'
+#' @param dict_path Path to the dictionary csvfile.
+#' @param data_dir Path to the directory of the tidy R data objects. Defaults to data/
+#'
+#' @return NULL
+#' @export
+#'
+#' @examples
+#' \dontrun{
+#' update_dictionary(dict_path = "data-raw/my-dictionary.csv")
+#' }
+#'
+fill_dictionary <- function(dict_path, data_dir = "data/"){
+  # Collect tidy data information
   if(dir.exists(data_dir)){
-    # Collect tidy data information
     tidydata_info <- collect_tidydata_info(data_dir)
-    # Fill in dictionary
-    dictionary <- tibble::tibble(directory = "data/",
-                   file_name = tidydata_info$file_name,
-                   variable_name = tidydata_info$var_name,
-                   variable_type = tidydata_info$var_type,
-                   description = NULL)
-    # Export dictionary
-    readr::write_csv(x = dictionary, file = dict_path)
-    # Prompt to complete variable description
-    usethis::ui_todo("Complete the dictionary with variable descriptions.")
   } else {
     # Error because tidy data is not yet available, should complete that first
-    naerror <- simpleError("There is no tidy data available. Try with devtools::use_data() to store the tidy data as an R data object.")
+    naerror <- simpleError("There is no tidy data available. Try first with devtools::use_data() to store the tidy data as an R data object.")
     stop(naerror)
+  }
+  # Fill in dictionary
+  dictionary <- tibble::tibble(directory = "data/",
+                               file_name = tidydata_info$file_name,
+                               variable_name = tidydata_info$var_name,
+                               variable_type = tidydata_info$var_type,
+                               description = NA)
+  # Export dictionary
+  readr::write_csv(x = dictionary, file = dict_path, na = "")
+  # Prompt to complete variable description
+  usethis::ui_todo("To complete the dictionary, please write the variable descriptions.")
+}
+
+no_dict <- function(dict_path) {
+  if(file.exists(dict_path)) {
+    return(FALSE)
+  } else {
+    return(TRUE)
   }
 }
 
@@ -69,10 +99,4 @@ collect_tidydata_info <- function(data_dir){
     var_type <- c(var_type, sapply(tidydata, typeof))
   }
   return(data.frame(file_name, var_name, var_type))
-}
-
-load_object <- function(file) {
-  tmp_env <- new.env()
-  load(file = file, envir = tmp_env)
-  head(tmp_env[[ls(tmp_env)[1]]])
 }
