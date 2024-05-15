@@ -18,8 +18,9 @@
 #'
 setup_dictionary <- function() {
   # Check working directory
-  has_dataraw <- "data-raw" %in% list.files(getwd())
-  correct_wd <- "DESCRIPTION" %in% list.files(getwd()) && "NAMESPACE" %in% list.files(getwd())
+  correct_wd <- file.exists(fs::path_wd("DESCRIPTION")) &&
+    file.exists(fs::path_wd("NAMESPACE"))
+  has_dataraw <- dir.exists(fs::path_wd("data-raw"))
   if(correct_wd) {
     if(!has_dataraw){
       usethis::ui_stop("You have not set up the raw data.
@@ -58,11 +59,10 @@ fill_dictionary <- function(dict_path, data_dir = "data/"){
     tidydata_info <- collect_tidydata_info(data_dir)
   } else {
     # Error because tidy data is not yet available, should complete that first
-    naerror <- simpleError("There is no tidy data available. Try first with devtools::use_data() to store the tidy data as an R data object.")
-    stop(naerror)
+    usethis::ui_stop("There is no tidy data available. Try first with devtools::use_data() to store the tidy data as an R data object.")
   }
   # Fill in dictionary
-  dictionary <- tibble::tibble(directory = "data/",
+  dictionary <- tibble::tibble(directory = data_dir,
                                file_name = tidydata_info$file_name,
                                variable_name = tidydata_info$var_name,
                                variable_type = tidydata_info$var_type,

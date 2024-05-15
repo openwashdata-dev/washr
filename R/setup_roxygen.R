@@ -13,14 +13,17 @@
 #'
 setup_roxygen <- function() {
   # Check dictionary existence
-  input_file_path <- fs::path(getwd(), "data-raw", "dictionary", ext = "csv")
+  input_file_path <- fs::path_wd("data-raw", "dictionary", ext = "csv")
+  if (!file.exists(input_file_path)) {
+    usethis::ui_stop("Data dictionary does not exist in data-raw/. Consider to set up raw data or a dictionary first.")
+  }
   # Check R/ existence
-  output_file_dir <- fs::path(getwd(), "R")
+  output_file_dir <- fs::path_wd("R")
   if (!dir.exists(output_file_dir)) {
     usethis::use_r(open = FALSE)
   }
   # Check data/ existence
-  tidy_datasets <- list.files(path = fs::path(getwd(), "data/"))
+  tidy_datasets <- list.files(path = fs::path_wd("data"))
   num_tidy_datasets <- length(tidy_datasets)
   # Write roxygen doc for each tidy dataset
   if (num_tidy_datasets == 0){
@@ -34,7 +37,7 @@ setup_roxygen <- function() {
       generate_roxygen_docs(input_file_path = input_file_path,
                             output_file_path = output_file_path,
                             df_name = df_name)
-      usethis::ui_todo("Please write the title and description for \n {ui_value(output_file_path)}")
+      usethis::ui_todo("Please write the title and description for \n {usethis::ui_value(output_file_path)}")
     }
   }
 }
