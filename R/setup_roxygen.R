@@ -1,5 +1,11 @@
-#' Set up roxygen documentation for all tidy datasets with the dictionary
+#' Set up roxygen documentation for all tidy data sets using the dictionary
 #'
+#' @description
+#' `setup_roxygen()` creates Roxygen documentation for all tidy data sets found
+#' in the dictionary file. The dictionary should include columns for
+#' directory, file name, variable name, variable type, and description. This
+#' function generates Roxygen comments with this information, facilitating
+#' consistent and thorough documentation for your data sets.
 #'
 #' @return NULL
 #' @export
@@ -15,7 +21,7 @@ setup_roxygen <- function() {
   # Check dictionary existence
   input_file_path <- fs::path_wd("data-raw", "dictionary", ext = "csv")
   if (!file.exists(input_file_path)) {
-    usethis::ui_stop("Data dictionary does not exist in data-raw/. Consider to set up raw data or a dictionary first.")
+    usethis::ui_stop("Data dictionary does not exist in the data-raw/ directory. Please set up the raw data or create a dictionary first.")
   }
   # Check R/ existence
   output_file_dir <- fs::path_wd("R")
@@ -27,8 +33,8 @@ setup_roxygen <- function() {
   num_tidy_datasets <- length(tidy_datasets)
   # Write roxygen doc for each tidy dataset
   if (num_tidy_datasets == 0){
-    usethis::ui_stop("No tidy dataset available in data/ directory.
-                     Complete data processing and export tidy data first.")
+    usethis::ui_stop("No tidy data sets are available in the data/ directory.
+                     Please complete data processing and export tidy data first.")
   } else {
     for (d in tidy_datasets){
       # Update output_file_path to have the same name as df_name with .R extension

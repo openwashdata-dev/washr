@@ -1,5 +1,5 @@
 Package: washr
-Title: Tools to make openwashdata data package workflow consistent and efficient
+Title: Efficient workflow tools for openwashdata package
 Version: 0.0.0.9000
 Authors@R: c(
     person("Mian", "Zhong", , "mzhong@ethz.ch", role = c("aut", "cre"),
@@ -7,7 +7,7 @@ Authors@R: c(
     person("Margaux", "Götschmann", , "margauxg@ethz.ch", role = "aut",
            comment = c(ORCID = "0009-0002-2567-3343"))
   )
-Description: A set of automation tools to set up an openwashdata data package in a consistent structure. It helps to reduce manual entries on tidy data exporting, README writing, pkgdown configuration and content, and etc.
+Description: Automate the creation of openwashdata data packages with consistent structure. Simplify tasks such as tidy data exporting, README writing, pkgdown configuration, and more.
 License: MIT + file LICENSE
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)

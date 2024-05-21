@@ -1,11 +1,11 @@
-#' Set up a dictionary file in raw data directory
+#' Create a dictionary file for tidy data sets
 #'
 #' @description
-#' The function creates and fills in a dictionary csvfile for tidy datasets in
-#' data/ directory. The dictionary csvfile contains 5 variables: directory,
-#' file_name, var_name, var_type, and description. If tidy data exists, the dictionary
-#' will be filled with the directory information, (data) file names, variable names,
-#' and variable types; otherwise, it only creates a dictionary csvfile with empty columns.
+#' `setup_dictionary()` generates a dictionary CSV file in the
+#' data directory. The dictionary file
+#' contains information on the tidy data sets such as directory, file names, variable names,
+#' variable types, and descriptions. If tidy data exists, the dictionary is populated with
+#' relevant information; otherwise, it creates an empty dictionary CSV file.
 #'
 #' @export
 #'
@@ -24,7 +24,7 @@ setup_dictionary <- function() {
   if(correct_wd) {
     if(!has_dataraw){
       usethis::ui_stop("You have not set up the raw data.
-                        Consider to run setup_rawdata() and import raw data files first.")
+                        Please run setup_rawdata() and import raw data files first.")
     }
   } else {
     usethis::ui_stop("You are not in the correct working directory for developing the data package.
@@ -35,7 +35,7 @@ setup_dictionary <- function() {
   if(no_dict(dict_path)){
     fill_dictionary(data_dir = "data", dict_path)
   } else {
-    usethis::ui_stop(paste("The dictionary csvfile", dict_path, "already exists!"))
+    usethis::ui_stop(paste("The dictionary CSV file", dict_path, "already exists!"))
     #TODO: choose to override
   }
 }
@@ -59,7 +59,7 @@ fill_dictionary <- function(dict_path, data_dir = "data/"){
     tidydata_info <- collect_tidydata_info(data_dir)
   } else {
     # Error because tidy data is not yet available, should complete that first
-    usethis::ui_stop("There is no tidy data available. Try first with devtools::use_data() to store the tidy data as an R data object.")
+    usethis::ui_stop("There is no tidy data available. Please use devtools::use_data() to store the tidy data as an R data object first.")
   }
   # Fill in dictionary
   dictionary <- tibble::tibble(directory = data_dir,
@@ -70,7 +70,7 @@ fill_dictionary <- function(dict_path, data_dir = "data/"){
   # Export dictionary
   readr::write_csv(x = dictionary, file = dict_path, na = "")
   # Prompt to complete variable description
-  usethis::ui_todo("To complete the dictionary, please write the variable descriptions.")
+  usethis::ui_todo("To complete the dictionary, please provide the variable descriptions.")
 }
 
 no_dict <- function(dict_path) {
