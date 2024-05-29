@@ -22,6 +22,6 @@ library(openxlsx)
 usethis::use_data({{{name}}}, overwrite = TRUE)
 fs::dir_create(here::here("inst", "extdata"))
 readr::write_csv({{{name}}},
-                 here::here("inst", "extdata", paste0({{{name}}}, ".csv")))
+                 here::here("inst", "extdata", paste0("{{{name}}}", ".csv")))
 openxlsx::write.xlsx({{{name}}},
-                     here::here("inst", "extdata", paste0({{{name}}}, ".xlsx")))
+                     here::here("inst", "extdata", paste0("{{{name}}}", ".xlsx")))
