@@ -2,12 +2,16 @@
 % Please edit documentation in R/setup_roxygen.R
 \name{setup_roxygen}
 \alias{setup_roxygen}
-\title{Set up roxygen documentation for all tidy datasets with the dictionary}
+\title{Set up roxygen documentation for all tidy data sets using the dictionary}
 \usage{
 setup_roxygen()
 }
 \description{
-Set up roxygen documentation for all tidy datasets with the dictionary
+\code{setup_roxygen()} creates Roxygen documentation for all tidy data sets found
+in the dictionary file. The dictionary should include columns for
+directory, file name, variable name, variable type, and description. This
+function generates Roxygen comments with this information, facilitating
+consistent and thorough documentation for your data sets.
 }
 \examples{
 \dontrun{

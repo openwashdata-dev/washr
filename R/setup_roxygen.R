@@ -70,10 +70,10 @@ setup_roxygen <- function() {
 #'
 generate_roxygen_docs <- function(input_file_path, output_file_path, df_name=NULL){
   # Read input CSV file
-  dict <- read.csv(input_file_path)
+  dict <- readr::read_csv(input_file_path)
   ## If an empty csv should quit with error: Cannot generate roxygen file with an empty dictionary
   # Check if df_name is provided and not NULL, then filter input_df
-  dict <- dplyr::filter(dict, file_name == paste0(df_name, ".rda"))
+  dict <- dplyr::filter(dict, dict$file_name == paste0(df_name, ".rda"))
   if (file.exists(output_file_path)) {
     head <- get_roxygen_head(output_file_path)
   } else {

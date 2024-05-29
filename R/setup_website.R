@@ -1,7 +1,9 @@
 #' Set up a pkgdown website for the data package
 #'
-#' @return
+#' @param has_example Should the pkgdown website include an example vignette page?
 #'
+#' @return NULL
+#' @export
 #'
 #' @examples
 #' \dontrun{
@@ -14,7 +16,7 @@ setup_website <- function(has_example=FALSE){
     # Add configuration file from washr templates
     name <- desc::desc_get("Package", file = file)[[1]]
     usethis::use_template(template = "_pkgdown.yml",
-                          save_as = r_path,
+                          save_as = ".",
                           data = list(name = name),
                           ignore = FALSE,
                           open = FALSE,

@@ -2,16 +2,16 @@
 % Please edit documentation in R/setup_dictionary.R
 \name{setup_dictionary}
 \alias{setup_dictionary}
-\title{Set up a dictionary file in raw data directory}
+\title{Create a dictionary file for tidy data sets}
 \usage{
 setup_dictionary()
 }
 \description{
-The function creates and fills in a dictionary csvfile for tidy datasets in
-data/ directory. The dictionary csvfile contains 5 variables: directory,
-file_name, var_name, var_type, and description. If tidy data exists, the dictionary
-will be filled with the directory information, (data) file names, variable names,
-and variable types; otherwise, it only creates a dictionary csvfile with empty columns.
+\code{setup_dictionary()} generates a dictionary CSV file in the
+data directory. The dictionary file
+contains information on the tidy data sets such as directory, file names, variable names,
+variable types, and descriptions. If tidy data exists, the dictionary is populated with
+relevant information; otherwise, it creates an empty dictionary CSV file.
 }
 \examples{
 \dontrun{
