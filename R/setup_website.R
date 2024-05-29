@@ -16,7 +16,7 @@ setup_website <- function(has_example=FALSE){
     # Add configuration file from washr templates
     name <- desc::desc_get("Package", file = file)[[1]]
     usethis::use_template(template = "_pkgdown.yml",
-                          save_as = ".",
+                          save_as = "./_pkgdown.yml",
                           data = list(name = name),
                           ignore = FALSE,
                           open = FALSE,
