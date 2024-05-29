@@ -5,7 +5,7 @@
 #'
 #' @examples
 #' \dontrun{
-#'
+#'  setup_website(has_example = TRUE)
 #' }
 #'
 setup_website <- function(has_example=FALSE){
@@ -20,18 +20,19 @@ setup_website <- function(has_example=FALSE){
                           open = FALSE,
                           package = "washr")
     usethis::use_pkgdown()
-    pkgdown::build_site()
 
     # Create example vignettes
     if (has_example) {
       usethis::use_article("examples")
       devtools::build_rmd("vignettes/articles/examples.Rmd")
     }
+    pkgdown::build_site()
   } else {
     usethis::ui_stop("No README.md exists. Consider to set up and write README first. You may use washr::setup_readme()")
   }
 }
 
 is_readme_available <- function(){
-  return FALSE
+  is_available <- fs::file_exists(fs::path_wd("README.md"))
+  return(is_available)
 }
