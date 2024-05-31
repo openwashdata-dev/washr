@@ -111,7 +111,8 @@ get_roxygen_head <- function(roxygen_file_path){
 
 create_roxygen_body <- function(dict){
   # Create format line
-  n_rows <- NA #TODO: Load the data object
+  dataobj <- fs::path("data", dict$file_name[1])
+  n_rows <- nrow(load_object(dataobj)) #TODO: Load the data object
   n_vars <- nrow(dict)
   format_line <- paste0("#' @format A tibble with ", n_rows,"rows and ", n_vars," variables")
 

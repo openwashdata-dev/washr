@@ -24,7 +24,7 @@ setup_readme <- function(){
   ## TODO: sanity_check() on extdata?
   usethis::use_readme_rmd(open = FALSE)
   fs::file_delete(readmermd_path)
-  usethis::use_template(template = "README.rmd",
+  usethis::use_template(template = "README.Rmd",
                         save_as = readmermd_path,
                         data = list(packagename = pkgname,
                                     dataname = dataname),
