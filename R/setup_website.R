@@ -1,7 +1,7 @@
 #' Set up a pkgdown website for the data package
 #'
-#' @return
-#'
+#' @return NULL
+#' @export
 #'
 #' @examples
 #' \dontrun{
