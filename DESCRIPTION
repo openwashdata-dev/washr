@@ -16,6 +16,7 @@ Imports:
     desc (>= 1.4.3),
     devtools (>= 2.4.5),
     dplyr (>= 1.1.4),
+    cffr (>= 1.0.1),
     fs (>= 1.6.3),
     pkgdown (>= 2.0.7),
     readr (>= 2.1.5),
