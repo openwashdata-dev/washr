@@ -1,9 +1,20 @@
-setup_citation <- function(doi){
+#' Generate a citation file for the dataset.
+#'
+#' @param doi DOI(Digital Object Identifier)
+#'
+#' @return NULL
+#' @export
+#'
+#' @examples
+#' \dontrun{
+#'   add_citation(doi = "10.5281/zenodo.11185699")
+#' }
+add_citation <- function(doi){
   # creates CFF with all author roles
   mod_cff <- cffr::cff_create("DESCRIPTION",
                         dependencies = FALSE,
                         keys = list("doi" = doi,
-                                    "date-released" = Sys.Date())) #TODO:date-released to be consistent with DESCRIPTION
+                                    "date-released" = desc::desc_get("Date")))
 
   # Remove the preferred-citation key
   mod_cff$`preferred-citation` <- NULL
