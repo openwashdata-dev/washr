@@ -15,5 +15,4 @@ setup_dictionary()
 # Complete save the dictionary csvfile with variable descriptions
 setup_readme()
 }
-
 }

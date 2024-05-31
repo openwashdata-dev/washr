@@ -16,5 +16,4 @@ Set up a pkgdown website for the data package
 \dontrun{
  setup_website(has_example = TRUE)
 }
-
 }

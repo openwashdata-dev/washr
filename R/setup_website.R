@@ -9,7 +9,6 @@
 #' \dontrun{
 #'  setup_website(has_example = TRUE)
 #' }
-#'
 setup_website <- function(has_example=FALSE){
   # Check on README file
   if (is_readme_available()) {

@@ -10,7 +10,6 @@
 #' # Complete save the dictionary csvfile with variable descriptions
 #' setup_readme()
 #' }
-#'
 setup_readme <- function(){
   # Get metadata
   readmermd_path <- fs::path("README", ext = "Rmd")
