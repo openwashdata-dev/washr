@@ -13,7 +13,7 @@ setup_website <- function(has_example=FALSE){
   # Check on README file
   if (is_readme_available()) {
     # Add configuration file from washr templates
-    name <- desc::desc_get("Package", file = file)[[1]]
+    name <- desc::desc_get("Package")[[1]]
     usethis::use_template(template = "_pkgdown.yml",
                           save_as = "./_pkgdown.yml",
                           data = list(name = name),

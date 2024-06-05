@@ -20,7 +20,7 @@ update_description <- function(file = ".", github_user = "https://github.com/ope
   # author
 
   # license
-  # usethis::use_ccby_license()
+  usethis::use_ccby_license()
 
   # language
   desc::desc_set("Language", "en-GB", file = file)
