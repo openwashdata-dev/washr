@@ -1,6 +1,11 @@
 #' Set up a pkgdown website for the data package
 #'
-#' @param has_example Should the pkgdown website include an example vignette page?
+#' @description
+#' Use openwashdata pkgdown template to create a website for the data package from
+#' its README.md file.
+#'
+#' @param has_example logical. Should the pkgdown website include a vignette page
+#' for writing an example? Defaults to FALSE
 #'
 #' @return NULL
 #' @export

@@ -7,10 +7,12 @@
 setup_website(has_example = FALSE)
 }
 \arguments{
-\item{has_example}{Should the pkgdown website include an example vignette page?}
+\item{has_example}{logical. Should the pkgdown website include a vignette page
+for writing an example? Defaults to FALSE}
 }
 \description{
-Set up a pkgdown website for the data package
+Use openwashdata pkgdown template to create a website for the data package from
+its README.md file.
 }
 \examples{
 \dontrun{

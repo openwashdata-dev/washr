@@ -1,5 +1,8 @@
 #' Generate the README rmarkdown file
 #'
+#' @description
+#' Use openwashdata README template to generate the README files based on datasets
+#' retrieved from the data/ directory.
 #'
 #' @return NULL
 #' @export

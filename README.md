@@ -21,3 +21,7 @@ You can install the development version of washr from
 # install.packages("devtools")
 devtools::install_github("openwashdata-dev/washr")
 ```
+
+## Workflow
+
+To learn more, please refer to the detailed vignette: .
