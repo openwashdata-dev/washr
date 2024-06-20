@@ -70,7 +70,7 @@ setup_roxygen <- function() {
 #'
 generate_roxygen_docs <- function(input_file_path, output_file_path, df_name=NULL){
   # Read input CSV file
-  dict <- readr::read_csv(input_file_path)
+  dict <- readr::read_csv(input_file_path, show_col_types = FALSE)
   ## If an empty csv should quit with error: Cannot generate roxygen file with an empty dictionary
   # Check if df_name is provided and not NULL, then filter input_df
   dict <- dplyr::filter(dict, dict$file_name == paste0(df_name, ".rda"))
@@ -114,7 +114,7 @@ create_roxygen_body <- function(dict){
   dataobj <- fs::path("data", dict$file_name[1])
   n_rows <- nrow(load_object(dataobj)) #TODO: Load the data object
   n_vars <- nrow(dict)
-  format_line <- paste0("#' @format A tibble with ", n_rows,"rows and ", n_vars," variables")
+  format_line <- paste0("#' @format A tibble with ", n_rows," rows and ", n_vars," variables")
 
   # Create \describe block
   block <- create_describe_block(dict)

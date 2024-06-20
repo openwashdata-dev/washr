@@ -1,6 +1,7 @@
 # Description ------------------------------------------------------------------
 # R script to process uploaded raw data into a tidy, analysis-ready data frame
 # Load packages ----------------------------------------------------------------
+## Run the following code in console if you don't have the packages
 ## install.packages(c("usethis", "fs", "here", "readr", "openxlsx"))
 library(usethis)
 library(fs)
@@ -9,8 +10,7 @@ library(readr)
 library(openxlsx)
 
 # Read data --------------------------------------------------------------------
-# data_in <- read_csv("data-raw/dataset.csv") |>
-#  as_tibble()
+# data_in <- read_csv("data-raw/dataset.csv")
 # codebook <- read_excel("data-raw/codebook.xlsx") |>
 #  clean_names()
 

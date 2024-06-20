@@ -44,6 +44,8 @@ devtools::install_github("openwashdata/{{{packagename}}}")
 ```
 
 ```{r}
+## Run the following code in console if you don't have the packages
+## install.packages(c("dplyr", "knitr", "readr", "stringr", "gt", "kableExtra"))
 library(dplyr)
 library(knitr)
 library(readr)
