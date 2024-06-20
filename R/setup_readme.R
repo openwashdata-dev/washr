@@ -1,16 +1,20 @@
-#' Generate the README rmarkdown file
+#' Generate the README Rmarkdown file
 #'
+#' @description
+#' `setup_readme()` uses the openwashdata README template to generate README files based on datasets
+#' retrieved from the `data/` directory. It helps in creating consistent and informative README documentation
+#' for your data packages.
 #'
 #' @return NULL
 #' @export
 #'
 #' @examples
 #' \dontrun{
+#' # Generate the README file after setting up the dictionary
 #' setup_dictionary()
-#' # Complete save the dictionary csvfile with variable descriptions
+#' # Complete and save the dictionary CSV file with variable descriptions
 #' setup_readme()
 #' }
-#'
 setup_readme <- function(){
   # Get metadata
   readmermd_path <- fs::path("README", ext = "Rmd")
@@ -24,7 +28,7 @@ setup_readme <- function(){
   ## TODO: sanity_check() on extdata?
   usethis::use_readme_rmd(open = FALSE)
   fs::file_delete(readmermd_path)
-  usethis::use_template(template = "README.rmd",
+  usethis::use_template(template = "README.Rmd",
                         save_as = readmermd_path,
                         data = list(packagename = pkgname,
                                     dataname = dataname),

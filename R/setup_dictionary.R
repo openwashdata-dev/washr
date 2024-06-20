@@ -70,7 +70,7 @@ fill_dictionary <- function(dict_path, data_dir = "data/"){
   # Export dictionary
   readr::write_csv(x = dictionary, file = dict_path, na = "")
   # Prompt to complete variable description
-  usethis::ui_todo("To complete the dictionary, please provide the variable descriptions.")
+  usethis::ui_todo("To complete the dictionary at {dict_path}, please provide the variable descriptions.")
 }
 
 no_dict <- function(dict_path) {

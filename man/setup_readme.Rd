@@ -7,7 +7,8 @@
 setup_readme()
 }
 \description{
-Generate the README rmarkdown file
+Use openwashdata README template to generate the README files based on datasets
+retrieved from the data/ directory.
 }
 \examples{
 \dontrun{
@@ -15,5 +16,4 @@ setup_dictionary()
 # Complete save the dictionary csvfile with variable descriptions
 setup_readme()
 }
-
 }

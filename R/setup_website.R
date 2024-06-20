@@ -1,20 +1,26 @@
 #' Set up a pkgdown website for the data package
 #'
-#' @param has_example Should the pkgdown website include an example vignette page?
+#' @description
+#' `setup_website()` uses the openwashdata pkgdown template to create a website for the data package
+#' based on its README.md file. The website provides a structured and visually appealing presentation
+#' of the package's documentation.
+#'
+#' @param has_example Logical. Should the pkgdown website include a vignette page
+#' for writing an example? Defaults to FALSE.
 #'
 #' @return NULL
 #' @export
 #'
 #' @examples
 #' \dontrun{
+#' # Set up the pkgdown website including a vignette page
 #'  setup_website(has_example = TRUE)
 #' }
-#'
 setup_website <- function(has_example=FALSE){
   # Check on README file
   if (is_readme_available()) {
     # Add configuration file from washr templates
-    name <- desc::desc_get("Package", file = file)[[1]]
+    name <- desc::desc_get("Package")[[1]]
     usethis::use_template(template = "_pkgdown.yml",
                           save_as = "./_pkgdown.yml",
                           data = list(name = name),
