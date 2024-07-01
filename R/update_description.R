@@ -3,7 +3,7 @@
 #'
 #' @description
 #' This function updates the DESCRIPTION file of an R package to comply with openwashdata standards.
-#' It ensures that fields such as `doculicense`, `language`, `date`, `URL`, and others are correctly specified.
+#' It ensures that fields such as `License`, `Language`, `Date`, `URL`, and others are correctly specified.
 #'
 #' @param file Character. The file path to the DESCRIPTION file of the R package. Defaults to the current working directory.
 #' @param github_user Character. The URL path to the GitHub user or organization that hosts the current package. Defaults to "https://github.com/openwashdata".

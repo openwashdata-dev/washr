@@ -6,6 +6,9 @@
 \usage{
 setup_readme()
 }
+\value{
+NULL. This function creates a README.Rmd under the package directory.
+}
 \description{
 \code{setup_readme()} uses the openwashdata README template to generate README files based on datasets
 retrieved from the \verb{data/} directory. It helps in creating consistent and informative README documentation

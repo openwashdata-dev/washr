@@ -14,9 +14,12 @@ update_description(
 
 \item{github_user}{Character. The URL path to the GitHub user or organization that hosts the current package. Defaults to "https://github.com/openwashdata".}
 }
+\value{
+NULL. Update fields directly in DESCRIPTION file.
+}
 \description{
 This function updates the DESCRIPTION file of an R package to comply with openwashdata standards.
-It ensures that fields such as \code{doculicense}, \code{language}, \code{date}, \code{URL}, and others are correctly specified.
+It ensures that fields such as \code{License}, \code{Language}, \code{Date}, \code{URL}, and others are correctly specified.
 }
 \examples{
 \dontrun{
