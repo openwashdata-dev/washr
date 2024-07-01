@@ -10,6 +10,7 @@
 #'
 #' @export
 #'
+#' @returns NULL. Update fields directly in DESCRIPTION file.
 #' @examples
 #' \dontrun{
 #' # Update DESCRIPTION file in the current package

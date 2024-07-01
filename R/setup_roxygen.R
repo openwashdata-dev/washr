@@ -7,7 +7,9 @@
 #' function generates Roxygen comments with this information, facilitating
 #' consistent and thorough documentation for your data sets.
 #'
-#' @return NULL
+#' @returns NULL. This function creates documentation files inside "R/". Error if
+#' tidy data cannot be found.
+#'
 #' @export
 #'
 #' @examples
@@ -57,7 +59,7 @@ setup_roxygen <- function() {
 #' @param output_file_path Path to the output file that will contain the roxygen2 documentation.
 #' @param df_name Optional name of the variable to filter the input dataframe by. Default is NULL.
 #'
-#' @return NULL
+#' @returns Character string of a generated roxygen documentation.
 #'
 #' @export
 #'
@@ -85,6 +87,7 @@ generate_roxygen_docs <- function(input_file_path, output_file_path, df_name=NUL
   output <-c(output, paste0('"', df_name, '"'))
   # Write output to file
   writeLines(output, output_file_path)
+  return(output)
 }
 
 create_roxygen_head <- function(df_name) {

@@ -5,7 +5,8 @@
 #' retrieved from the `data/` directory. It helps in creating consistent and informative README documentation
 #' for your data packages.
 #'
-#' @return NULL
+#' @returns NULL. This function creates a README.Rmd under the package directory.
+#'
 #' @export
 #'
 #' @examples
