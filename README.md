@@ -14,6 +14,12 @@ consistent and efficient.
 
 ## Installation
 
+Install the released version of `washr` from CRAN (to be submitted):
+
+``` r
+install.packages("washr")
+```
+
 You can install the development version of washr from
 [GitHub](https://github.com/) with:
 

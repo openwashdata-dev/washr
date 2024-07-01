@@ -23,6 +23,12 @@ The goal of washr is to provide tools to make [openwashdata data package](https:
 
 ## Installation
 
+Install the released version of `washr` from CRAN (to be submitted):
+
+``` r
+install.packages("washr")
+```
+
 You can install the development version of washr from [GitHub](https://github.com/) with:
 
 ``` r
