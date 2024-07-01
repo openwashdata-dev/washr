@@ -8,7 +8,8 @@
 #' @param has_example Logical. Should the pkgdown website include a vignette page
 #' for writing an example? Defaults to FALSE.
 #'
-#' @return NULL
+#' @returns NULL. Error if no README file is found.
+#'
 #' @export
 #'
 #' @examples
@@ -35,6 +36,11 @@ setup_website <- function(has_example=FALSE){
       devtools::build_rmd("vignettes/articles/examples.Rmd")
     }
     pkgdown::build_site()
+    # remove docs/ in gitignore
+    gitignorepath <- fs::path(".gitignore")
+    gitignore <- readLines(gitignorepath)
+    writeLines(setdiff(gitignore, "docs"),
+               gitignorepath)
   } else {
     usethis::ui_stop("No README.md exists. Consider to set up and write README first. You may use washr::setup_readme()")
   }

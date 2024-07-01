@@ -9,6 +9,8 @@
 #'
 #' @export
 #'
+#' @returns NULL. Error if raw data is not found or not in a package directory.
+#'
 #' @examples
 #' \dontrun{
 #' setup_rawdata()
@@ -45,7 +47,8 @@ setup_dictionary <- function() {
 #' @param dict_path Path to the dictionary csvfile.
 #' @param data_dir Path to the directory of the tidy R data objects. Defaults to data/
 #'
-#' @return NULL
+#' @returns A tibble data frame of dataset dictionary with an empty description column to be written.
+#'
 #' @export
 #'
 #' @examples
@@ -71,7 +74,8 @@ fill_dictionary <- function(dict_path, data_dir = "data/"){
   readr::write_csv(x = dictionary, file = dict_path, na = "")
   # Prompt to complete variable description
   usethis::ui_todo("To complete the dictionary at {dict_path}, please provide the variable descriptions.")
-}
+  return(dictionary)
+  }
 
 no_dict <- function(dict_path) {
   if(file.exists(dict_path)) {

@@ -13,6 +13,9 @@ generate_roxygen_docs(input_file_path, output_file_path, df_name = NULL)
 
 \item{df_name}{Optional name of the variable to filter the input dataframe by. Default is NULL.}
 }
+\value{
+Character string of a generated roxygen documentation.
+}
 \description{
 This function takes a CSV table with columns \code{variable_name} and \code{description} as input,
 optionally filters it by \code{variable_name}, and outputs roxygen2 documentation for \verb{\\describe} and \verb{\\item}.

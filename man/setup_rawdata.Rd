@@ -6,6 +6,9 @@
 \usage{
 setup_rawdata()
 }
+\value{
+NULL. This function will create a directory "data-raw" under the package directory.
+}
 \description{
 \code{setup_rawdata()} creates a directory for raw data and an example script
 named \code{data_processing.R} for importing, processing and exporting the tidy data.

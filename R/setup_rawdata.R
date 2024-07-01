@@ -1,4 +1,3 @@
-
 #' Create the data-raw directory with a data-processing.R template
 #'
 #' @description
@@ -7,6 +6,8 @@
 #' The template assumes that the dataset name is the same as the data package name.
 #'
 #' @export
+#'
+#' @returns NULL. This function will create a directory "data-raw" under the package directory.
 #'
 #' @examples
 #' \dontrun{
@@ -25,17 +26,4 @@ setup_rawdata <- function(){
     open = rlang::is_interactive(),
     package = "washr"
   )
-
-  # Post a github issue to upload raw data
-  # gh::gh(
-  #   endpoint = paste0("POST openwashdata/", name, "/issues/"),
-  #   title = "Add raw data for data-raw folder",
-  #   body = "TODO"
-  # )
-
-  # Create empty dictionary file
-  # dict_path <- fs::path("data-raw", "dictionary", ext = "csv")
-  # file.create(dict_path)
-  # writeLines(text = "directory,file_name,variable_name,variable_type,description",
-  #            con = dict_path)
 }

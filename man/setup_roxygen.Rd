@@ -6,6 +6,10 @@
 \usage{
 setup_roxygen()
 }
+\value{
+NULL. This function creates documentation files inside "R/". Error if
+tidy data cannot be found.
+}
 \description{
 \code{setup_roxygen()} creates Roxygen documentation for all tidy data sets found
 in the dictionary file. The dictionary should include columns for
