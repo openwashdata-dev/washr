@@ -17,6 +17,7 @@ knitr::opts_chunk$set(
 )
 ```
 
+
 This vignette demonstrates the `washr` data package development workflow with a toy dataset titled `fssample`. The `fssample` data is an (imaginary) 5-day sample collection of faecal sludge. The raw data is a spreadsheet titled as `sample.xlsx`.
 
 > You are taking 20 samples of 1 liter faecal sludge from pit latrines and septic tanks at households and public toilets (5 samples each). For each sample, you note the number of daily users of the sanitation system.[^1]
@@ -39,6 +40,7 @@ You can download the raw data `sample.xlsx` here: <https://github.com/openwashda
 library(washr)
 library(devtools)
 ```
+
 
 Initialize an R package titled with `fssample` with `devtools`:
 
@@ -114,6 +116,7 @@ openxlsx::write.xlsx(fssample,
                      here::here("inst", "extdata", paste0("fssample", ".xlsx")))
 ```
 
+
 Once the data cleaning is done, run the entire `data_processing.R` script. Then, a directory `data/` that contains the exported (tidy) data in `.rda` format is created in the package root directory. The package directory now should look like the following structure:
 
 ```         
@@ -143,6 +146,7 @@ To document the data package, the most important file is `DESCRIPTION`. You work
 update_description()
 ```
 
+
 Notice that you still need to write the title, description and authors in the DESCRIPTION file. The function does NOT automatically update these fields.
 
 ## Document the dataset
@@ -157,9 +161,11 @@ When other people use the dataset, they need to understand what each column (i.e
 
 You create a dictionary for the dataset `fssample` in CSV file format by running:
 
+
 ```{r}
 setup_dictionary()
 ```
+
 
 Go to `data-raw/dictionary.csv`, open the CSV file.
 
@@ -216,3 +222,4 @@ After submitting to Zenodo and geting a DOI for the data package, you need to up
 ```{r}
 update_citation(doi = "put zenodo DOI string here")
 ```
+
