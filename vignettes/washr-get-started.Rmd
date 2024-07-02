@@ -180,37 +180,38 @@ Now open `R/fssample.R` and fill in the title and description for this dataset.
 
 # Communicate dataset
 
-The R dataset and documentation are complete. It's time to communicate with the public using human-readable and visually appealing tools. We currently achieve this with the following two components.
+The R dataset and documentation are complete. It's time to communicate with the public using human-readable and visually appealing tools. We currently achieve this with the following components.
 
--   README
--   pkgdown website
+-   README: An easy-to-read piece of what the data package does and how to install and use it.
+-   pkgdown website: A website of the package that displays README, references, and more detailed examples.
+-   citation CFF file: A citation file for the data package.
 
 ## README
-
+You generate a README R Markdown file from a template by running:
 ```{r}
 setup_readme()
 # Go to README.Rmd and complete this R Markdown file
-build_readme() # Generate README.md from README.Rmd
+devtools::build_readme() # Generate README.md from README.Rmd
 ```
 
 ## Pkgdown Website
-
+Once the README file is complete, you set up a website for the data package. The homepage of the website is based on the content of README and package metadata. Additionally, you can also add more pages or vignettes to this website later. To set up the website, run:
 ```{r}
 setup_website()
 ```
 
-Now, it's time to work on polishing the README and website. Once you are satisfied with them, don't forget to re-run `build_readme()` and `build_site()` again to update.
+Now, it's time to work on polishing the `README.Rmd` and website. Once you are satisfied with them, don't forget to re-run `devtools::build_readme()` and `devtools::build_site()` again to update.
 
 ## Citation
 
-First, we create a dummy citation file for Zenodo to retrieve information about the package.
+First, you create a dummy citation file for Zenodo submission to retrieve information about the package.
 
 ```{r}
 library(cffr)
 cffr::cff_write_citation()
 ```
 
-Submit to Zenodo and get a DOI
+After submitting to Zenodo and geting a DOI for the data package, you need to update the citation file by running:
 
 ```{r}
 update_citation(doi = "put zenodo DOI string here")
