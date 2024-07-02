@@ -11,6 +11,9 @@ fill_dictionary(dict_path, data_dir = "data/")
 
 \item{data_dir}{Path to the directory of the tidy R data objects. Defaults to data/}
 }
+\value{
+A tibble data frame of dataset dictionary with an empty description column to be written.
+}
 \description{
 Fill in the dictionary file based on the tidy data information
 }

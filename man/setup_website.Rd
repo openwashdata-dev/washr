@@ -7,15 +7,20 @@
 setup_website(has_example = FALSE)
 }
 \arguments{
-\item{has_example}{logical. Should the pkgdown website include a vignette page
-for writing an example? Defaults to FALSE}
+\item{has_example}{Logical. Should the pkgdown website include a vignette page
+for writing an example? Defaults to FALSE.}
+}
+\value{
+NULL. Error if no README file is found.
 }
 \description{
-Use openwashdata pkgdown template to create a website for the data package from
-its README.md file.
+\code{setup_website()} uses the openwashdata pkgdown template to create a website for the data package
+based on its README.md file. The website provides a structured and visually appealing presentation
+of the package's documentation.
 }
 \examples{
 \dontrun{
+# Set up the pkgdown website including a vignette page
  setup_website(has_example = TRUE)
 }
 }

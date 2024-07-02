@@ -6,6 +6,9 @@
 \usage{
 setup_dictionary()
 }
+\value{
+NULL. Error if raw data is not found or not in a package directory.
+}
 \description{
 \code{setup_dictionary()} generates a dictionary CSV file in the
 data directory. The dictionary file
