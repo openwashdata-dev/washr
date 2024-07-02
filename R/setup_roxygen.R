@@ -21,17 +21,17 @@
 #'
 setup_roxygen <- function() {
   # Check dictionary existence
-  input_file_path <- fs::path_wd("data-raw", "dictionary", ext = "csv")
+  input_file_path <- file.path(getwd(), "data-raw", "dictionary.csv")
   if (!file.exists(input_file_path)) {
     usethis::ui_stop("Data dictionary does not exist in the data-raw/ directory. Please set up the raw data or create a dictionary first.")
   }
   # Check R/ existence
-  output_file_dir <- fs::path_wd("R")
+  output_file_dir <- file.path(getwd(), "R")
   if (!dir.exists(output_file_dir)) {
     usethis::use_r(open = FALSE)
   }
   # Check data/ existence
-  tidy_datasets <- list.files(path = fs::path_wd("data"))
+  tidy_datasets <- list.files(path = file.path(getwd(), "data"))
   num_tidy_datasets <- length(tidy_datasets)
   # Write roxygen doc for each tidy dataset
   if (num_tidy_datasets == 0){
@@ -40,8 +40,8 @@ setup_roxygen <- function() {
   } else {
     for (d in tidy_datasets){
       # Update output_file_path to have the same name as df_name with .R extension
-      df_name <- fs::path_ext_remove(fs::path_file(d))
-      output_file_path <- fs::path(output_file_dir, df_name, ext = "R")
+      df_name <- strsplit(basename(file.path(d)), ".rda")[[1]]
+      output_file_path <- file.path(output_file_dir, paste0(df_name, ".R"))
       generate_roxygen_docs(input_file_path = input_file_path,
                             output_file_path = output_file_path,
                             df_name = df_name)
@@ -72,10 +72,10 @@ setup_roxygen <- function() {
 #'
 generate_roxygen_docs <- function(input_file_path, output_file_path, df_name=NULL){
   # Read input CSV file
-  dict <- readr::read_csv(input_file_path, show_col_types = FALSE)
+  dict <- utils::read.csv(input_file_path)
   ## If an empty csv should quit with error: Cannot generate roxygen file with an empty dictionary
   # Check if df_name is provided and not NULL, then filter input_df
-  dict <- dplyr::filter(dict, dict$file_name == paste0(df_name, ".rda"))
+  dict <- subset(dict, dict$file_name == paste0(df_name, ".rda"))
   if (file.exists(output_file_path)) {
     head <- get_roxygen_head(output_file_path)
   } else {
@@ -84,7 +84,7 @@ generate_roxygen_docs <- function(input_file_path, output_file_path, df_name=NUL
   body <- create_roxygen_body(dict)
   output <- c(head, body)
   # Label dataset
-  output <-c(output, paste0('"', df_name, '"'))
+  output <- c(output, paste0('"', df_name, '"'))
   # Write output to file
   writeLines(output, output_file_path)
   return(output)
@@ -114,7 +114,7 @@ get_roxygen_head <- function(roxygen_file_path){
 
 create_roxygen_body <- function(dict){
   # Create format line
-  dataobj <- fs::path("data", dict$file_name[1])
+  dataobj <- file.path("data", dict$file_name[1])
   n_rows <- nrow(load_object(dataobj)) #TODO: Load the data object
   n_vars <- nrow(dict)
   format_line <- paste0("#' @format A tibble with ", n_rows," rows and ", n_vars," variables")

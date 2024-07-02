@@ -37,7 +37,7 @@ setup_website <- function(has_example=FALSE){
     }
     pkgdown::build_site()
     # remove docs/ in gitignore
-    gitignorepath <- fs::path(".gitignore")
+    gitignorepath <- file.path(".gitignore")
     gitignore <- readLines(gitignorepath)
     writeLines(setdiff(gitignore, "docs"),
                gitignorepath)
@@ -47,6 +47,6 @@ setup_website <- function(has_example=FALSE){
 }
 
 is_readme_available <- function(){
-  is_available <- fs::file_exists(fs::path_wd("README.md"))
+  is_available <- file.exists(file.path(getwd(), "README.md"))
   return(is_available)
 }
