@@ -11,19 +11,26 @@
 #'
 #' @examples
 #' \dontrun{
-#' setup_rawdata()
+#'   setup_rawdata()
 #' }
 #'
 setup_rawdata <- function(){
-  usethis::use_directory("data-raw", ignore = TRUE)
-  r_path <- fs::path("data-raw", "data_processing", ext = "R")
-  name <- basename(getwd())
-  usethis::use_template(
-    "data_processing.R",
-    save_as = r_path,
-    data = list(name = name),
-    ignore = FALSE,
-    open = rlang::is_interactive(),
-    package = "washr"
-  )
+  correct_wd <- file.exists(file.path(getwd(), "DESCRIPTION")) &&
+    file.exists(file.path(getwd(), "NAMESPACE"))
+  if(correct_wd) {
+    usethis::use_directory("data-raw", ignore = TRUE)
+    r_path <- file.path("data-raw", "data_processing.R")
+    name <- basename(getwd())
+    usethis::use_template(
+      "data_processing.R",
+      save_as = r_path,
+      data = list(name = name),
+      ignore = FALSE,
+      open = rlang::is_interactive(),
+      package = "washr"
+    )
+  }else{
+    usethis::ui_stop("You are not in the correct working directory for developing the data package.
+                          Please check your working directory.")
+  }
 }

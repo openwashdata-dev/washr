@@ -11,7 +11,7 @@ NULL. Error if raw data is not found or not in a package directory.
 }
 \description{
 \code{setup_dictionary()} generates a dictionary CSV file in the
-data directory. The dictionary file
+\verb{data/} directory. The dictionary file
 contains information on the tidy data sets such as directory, file names, variable names,
 variable types, and descriptions. If tidy data exists, the dictionary is populated with
 relevant information; otherwise, it creates an empty dictionary CSV file.

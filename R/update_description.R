@@ -13,17 +13,21 @@
 #' @returns NULL. Update fields directly in DESCRIPTION file.
 #' @examples
 #' \dontrun{
-#' # Update DESCRIPTION file in the current package
+#'  # Update DESCRIPTION file in the current package
 #' update_description()
 #'
-#' # Update DESCRIPTION file in a specific package
+#'  # Update DESCRIPTION file in a specific package
 #' update_description(file = "path/to/your/package/DESCRIPTION")
 #'
-#' # Update DESCRIPTION file with a specific GitHub user
+#'  # Update DESCRIPTION file with a specific GitHub user
 #' update_description(github_user = "https://github.com/yourusername")
 #' }
 #'
+#'
 update_description <- function(file = ".", github_user = "https://github.com/openwashdata/"){
+  if(!file.exists(file.path(getwd(), "DESCRIPTION"))){
+    usethis::ui_stop("No DESCRIPTION file found!")
+  }
   pkgname <- desc::desc_get("Package", file = file)[[1]]
   # author
 

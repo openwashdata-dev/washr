@@ -1,4 +1,4 @@
-#' Generate a citation file for the dataset.
+#' Update the citation file for the dataset.
 #'
 #' @description
 #' Create a citation *.cff file for the released dataset from a given DOI(Digital
@@ -12,10 +12,10 @@
 #'
 #' @examples
 #' \dontrun{
-#'   add_citation(doi = "10.5281/zenodo.11185699")
+#'   update_citation(doi = "10.5281/zenodo.11185699")
 #' }
-add_citation <- function(doi){
-  # creates CFF with all author roles
+update_citation <- function(doi){
+  # Creates CFF with all author roles
   mod_cff <- cffr::cff_create("DESCRIPTION",
                         dependencies = FALSE,
                         keys = list("doi" = doi,
@@ -24,7 +24,7 @@ add_citation <- function(doi){
   # Remove the preferred-citation key
   mod_cff$`preferred-citation` <- NULL
 
-  # writes the CFF file
+  # Writes the CFF file
   cffr::cff_write(mod_cff)
 
   # Now write a CITATION file from the CITATION.cff file
@@ -38,7 +38,7 @@ add_citation <- function(doi){
   # Modify README and pkgdown
   add_citation_badge(doi)
   devtools::build_readme()
-  if(fs::dir_exists(fs::path("docs"))){
+  if(dir.exists(file.path("docs"))){
     devtools::build_site()
   }
 
@@ -50,7 +50,7 @@ add_citation_badge<- function(doi){
   badge_icon <- paste0("https://zenodo.org/badge/DOI/", doi, ".svg")
   zenodo_link <- paste0("https://zenodo.org/doi/", doi)
   badge_str <- sprintf("[![DOI](%s)](%s)", badge_icon, zenodo_link)
-  readme_rmd_path <- fs::path("README", ext = "Rmd")
+  readme_rmd_path <- file.path("README.Rmd")
   readme_rmd <- readLines(readme_rmd_path)
 
   i <- 1

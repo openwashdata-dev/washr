@@ -1,17 +1,17 @@
 ## Adapted from usethis package: https://github.com/r-lib/usethis/blob/9e64daf13ac1636187d59e6446d9526a414d8ba6/tests/testthat/helper.R
 
-create_local_package <- function(dir = fs::file_temp(pattern = "testpkg"),
+create_local_package <- function(dir = tempfile(pattern = "testpkg"),
                                  env = parent.frame(),
                                  rstudio = FALSE) {
   create_local_thing(dir, env, rstudio, "package")
 }
 
-create_local_thing <- function(dir = fs::file_temp(pattern = pattern),
+create_local_thing <- function(dir = tempfile(pattern = pattern),
                                env = parent.frame(),
                                rstudio = FALSE,
                                thing = c("package", "project")) {
   thing <- match.arg(thing)
-  if (fs::dir_exists(dir)) {
+  if (dir.exists(dir)) {
     ui_abort("Target {.arg dir} {.path {pth(dir)}} already exists.")
   }
 
@@ -21,7 +21,7 @@ create_local_thing <- function(dir = fs::file_temp(pattern = pattern),
   withr::defer(
     {
       print("Deleting temporary project: {.path {dir}}")
-      fs::dir_delete(dir)
+      unlink(dir, recursive = TRUE)
     },
     envir = env
   )
