@@ -1,14 +1,16 @@
 Package: washr
-Title: Efficient workflow tools for openwashdata package
+Title: R Data Package Development Tools For Openwashdata
 Version: 0.0.0.9000
 Authors@R: c(
     person("Mian", "Zhong", , "mzhong@ethz.ch", role = c("aut", "cre"),
            comment = c(ORCID = "0009-0009-4546-7214")),
     person("Margaux", "Götschmann", , "margauxg@ethz.ch", role = "aut",
            comment = c(ORCID = "0009-0002-2567-3343")),
+    person("Lars", "Schöbitz", , "lschoebitz@ethz.ch", role = "aut",
+           comment = c(ORCID = "0000-0003-2196-5015")),
     person("Global Health Engineering, ETH Zurich", role = "cph")
   )
-Description: A set of automation tools to set up an openwashdata data package in a consistent structure. It helps to reduce manual entries on tidy data exporting, README writing, pkgdown configuration and content, and etc.
+Description: A set of automation tools to set up an openwashdata data package in a consistent structure. It helps to reduce manual entries on tidy data exporting, data dictionary documentation, README and pkgdown website writing, and citation file generation.
 License: MIT + file LICENSE
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
@@ -29,8 +31,8 @@ Language: en-GB
 LazyData: true
 Config/Needs/website: rmarkdown
 Date: 2024-06-05
-URL: https://github.com/openwashdata/washr
-BugReports: https://github.com/openwashdata/washr/issues
+URL: https://github.com/openwashdata-dev/washr
+BugReports: https://github.com/openwashdata-dev/washr/issues
 Suggests: 
     knitr,
     rmarkdown,
