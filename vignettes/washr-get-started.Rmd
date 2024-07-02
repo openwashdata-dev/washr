@@ -20,7 +20,7 @@ library(washr)
 library(devtools)
 ```
 
-We show the workflow of `washr` to develop an openwashdata data package with a toy dataset `fssample`. The `fssample` data is a (imaginary) 5-day sample collection of faecal sludge.
+This vignette demonstrates the `washr` data package development workflow with a toy dataset titled `fssample`. The `fssample` data is an (imaginary) 5-day sample collection of faecal sludge.
 
 > You are taking 20 samples of 1 liter faecal sludge from pit latrines and septic tanks at households and public toilets (5 samples each). For each sample, you note the number of daily users of the sanitation system.[^1]
 
@@ -38,7 +38,7 @@ We show the workflow of `washr` to develop an openwashdata data package with a t
 
 # 1. Create and process dataset
 
-Once you initialize an R package named with `fssample` with `devtools`, we can start to set up the raw data in the package by executing:
+After initializing an R package named with `fssample` with `devtools`, you can start to set up the raw data in the package by executing:
 
 ```{r setup_rawdata}
 setup_rawdata()
@@ -57,25 +57,25 @@ openxlsx::write.xlsx(fssample,
                      here::here("inst", "extdata", paste0("fssample", ".xlsx")))
 ```
 
-A directory `data/` that contains tidy datasets should now exist under the `fssample` directory.
+A directory `data/` that contains the exported data in `.rds` format was created in the root directory. 
 
 # 2. Document dataset
 
-Now that we have the tidy data ready, we want to make sure that the dataset has good documentation for re-use and re-producibility. This includes to document the package itself as well as the datasets.
+The next step is to provide human and machine-readable documentation for the dataset and the package itself. 
 
-For documenting the package, we work with the DESCRIPTION file by running:
+For documenting the package, you work with the `DESCRIPTION` file by running:
 
 ```{r update_dict}
 update_description()
 ```
 
-Now we focus on the dataset documentation. We first create a dictionary for the dataset in the CSV format.
+Next comes the dataset documentation. You first create a dictionary for the dataset in CSV file format.
 
 ```{r}
 setup_dictionary()
 ```
 
-Go to `data-raw/dictionary.csv`, open it, and fill in the empty column `description` of the dictionary. Once the dictionary is complete, we document the dataset into an R documentation by executing:
+Go to `data-raw/dictionary.csv`, open the CSV file, and fill in the empty column `description` of the dictionary. Once the dictionary is complete, you document the dataset by turning the content of the CSV file into roxygen comments by executing:
 
 ```{r}
 setup_roxygen()
@@ -85,7 +85,7 @@ Go to `R/` and fill in the title and description for the dataset.
 
 # Communicate dataset
 
-Now we have both the R dataset and its documentation ready. It's time to communicate with the public using more human-readable and visually appealing tools. We currently achieve this with the following two components.
+The R dataset and documentation are complete. It's time to communicate with the public using human-readable and visually appealing tools. We currently achieve this with the following two components.
 
 -   README
 -   pkgdown website
