@@ -16,7 +16,7 @@ Description: A set of automation tools to set up an openwashdata data package in
 License: MIT + file LICENSE
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.3.1
+RoxygenNote: 7.3.2
 Imports:
     desc (>= 1.4.3),
     devtools (>= 2.4.5),

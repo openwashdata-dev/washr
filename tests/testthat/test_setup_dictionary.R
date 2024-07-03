@@ -38,16 +38,24 @@ test_that("setup_dictionary sets up a dictionary with correct values", {
   create_local_package()
   rlang::local_interactive(FALSE)
   washr::setup_rawdata()
-  mockdata <- data.frame(id = 1:3, name = c("A", "B", "C"))
+  mockdata <- data.frame(id = 1:3, name = c("A", "B", "C"),
+                         category = factor("dog", "cat", "dog"),
+                         measure = c(3.123, 39.1, 5.3),
+                         here = c(TRUE, FALSE, FALSE))
   usethis::use_data(mockdata)
   washr::setup_dictionary()
   expect_true(file.exists(file.path("data-raw", "dictionary.csv")))
   dict <- read.csv(file.path("data-raw", "dictionary.csv"))
+
   expect_equal(dict$file_name[1], "mockdata.rda")
   expect_equal(dict$variable_name[1], "id")
   expect_equal(dict$variable_type[1], "integer")
   expect_equal(dict$variable_name[2], "name")
   expect_equal(dict$variable_type[2], "character")
+  expect_equal(dict$variable_type[3], "factor")
+  expect_equal(dict$variable_type[4], "numeric")
+  expect_equal(dict$variable_type[5], "logical")
+
 })
 
 #TEST fill_dictionary ----------------------------------------------------------

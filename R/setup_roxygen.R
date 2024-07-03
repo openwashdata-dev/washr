@@ -1,11 +1,18 @@
 #' Set up roxygen documentation for all tidy data sets using the dictionary
 #'
 #' @description
-#' `setup_roxygen()` creates Roxygen documentation for all tidy data sets found
-#' in the dictionary file. The dictionary should include columns for
+#' Creates or updates Roxygen documentation for all tidy data sets found
+#' in the dictionary file.
+#'
+#' When first run, this function creates the Roxygen documentation with placeholders
+#' for the title and description field. The dictionary should include columns for
 #' directory, file name, variable name, variable type, and description. This
 #' function generates Roxygen comments with this information, facilitating
 #' consistent and thorough documentation for your data sets.
+#'
+#' When re-run this function, this function updates only the variable description entries
+#' in the Roxygen documentation files within R/ directory. The title and description fields remain
+#' unchanged.
 #'
 #' @returns NULL. This function creates documentation files inside "R/". Error if
 #' tidy data cannot be found.
@@ -105,7 +112,7 @@ get_roxygen_head <- function(roxygen_file_path){
   i <- 1
   line <- roxygen_text[1]
   while (!startsWith(line, prefix = "#' @format")) {
-    output <- c(roxygen_head, roxygen_text[i])
+    roxygen_head <- c(roxygen_head, roxygen_text[i])
     i <- i+1
     line <- roxygen_text[i]
   }
