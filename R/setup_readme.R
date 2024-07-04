@@ -1,4 +1,4 @@
-#' Generate the README Rmarkdown file
+#' Generate the README RMarkdown file
 #'
 #' @description
 #' `setup_readme()` uses the openwashdata README template to generate README files based on datasets

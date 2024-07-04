@@ -20,7 +20,7 @@ knitr::opts_chunk$set(
 
 This vignette demonstrates the `washr` data package development workflow with a toy dataset titled `fssample`. The `fssample` data is an (imaginary) 5-day sample collection of faecal sludge. The raw data is a spreadsheet titled as `sample.xlsx`.
 
-> You are taking 20 samples of 1 liter faecal sludge from pit latrines and septic tanks at households and public toilets (5 samples each). For each sample, you note the number of daily users of the sanitation system.[^1]
+> You are taking 20 samples of 1 litre faecal sludge from pit latrines and septic tanks at households and public toilets (5 samples each). For each sample, you note the number of daily users of the sanitation system.[^1]
 
 [^1]: Your sample collection starts on 1st November 2022. On day 5, you analyse the data in the laboratory for totals solids (TS) in g/L. In your spreadsheet, note the exact date of each collected sample.
 
@@ -217,7 +217,7 @@ library(cffr)
 cffr::cff_write_citation()
 ```
 
-After submitting to Zenodo and geting a DOI for the data package, you need to update the citation file by running:
+After submitting to Zenodo and getting a DOI for the data package, you need to update the citation file by running:
 
 ```{r}
 update_citation(doi = "put zenodo DOI string here")
