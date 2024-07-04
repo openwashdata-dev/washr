@@ -1,6 +1,6 @@
 Package: washr
 Title: R Data Package Development Tools for Openwashdata
-Version: 0.0.0.9000
+Version: 0.0.1
 Authors@R: c(
     person("Mian", "Zhong", , "mzhong@ethz.ch", role = c("aut", "cre"),
            comment = c(ORCID = "0009-0009-4546-7214")),
