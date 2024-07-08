@@ -7,7 +7,7 @@
 #'
 #' @param doi DOI(Digital Object Identifier), e.g., 10.5281/zenodo.11185699
 #'
-#' @return NULL
+#' @returns NULL. A citation .cff file is written under the root directory.
 #' @export
 #'
 #' @examples
@@ -43,7 +43,7 @@ update_citation <- function(doi){
   }
 
   # By last, read the citation
-  cat(readLines(path_cit), sep = "\n")
+   usethis::ui_todo("Proofread your citation file at {usethis::ui_value(path_cit)}")
 }
 
 add_citation_badge<- function(doi){

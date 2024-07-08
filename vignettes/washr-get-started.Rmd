@@ -17,7 +17,6 @@ knitr::opts_chunk$set(
 )
 ```
 
-
 This vignette demonstrates the `washr` data package development workflow with a toy dataset titled `fssample`. The `fssample` data is an (imaginary) 5-day sample collection of faecal sludge. The raw data is a spreadsheet titled as `sample.xlsx`.
 
 > You are taking 20 samples of 1 litre faecal sludge from pit latrines and septic tanks at households and public toilets (5 samples each). For each sample, you note the number of daily users of the sanitation system.[^1]
@@ -36,17 +35,20 @@ This vignette demonstrates the `washr` data package development workflow with a 
 
 You can download the raw data `sample.xlsx` here: <https://github.com/openwashdata-dev/washr/blob/cran/inst/extdata/sample.xlsx>
 
+Initialize an R package titled with `fssample` with `devtools`. Here we create the `fssample` package in a temporary directory, but you should consider a normal directory path like your project folder.
+
 ```{r setup}
 library(washr)
 library(devtools)
 ```
 
-
-Initialize an R package titled with `fssample` with `devtools`:
-
 ```{r create_package}
-devtools::create("path/to/fssample package directory/")
-# devtools::create("~/Desktop/openwashdata/fssample")
+tmpwd <- file.path(tempdir(), "fssample/")
+devtools::create(tmpwd)
+```
+
+```{r include=FALSE}
+knitr::opts_knit$set(root.dir = tmpwd)
 ```
 
 The `fssample` directory now is set up as an R package with the following structure:
@@ -54,7 +56,6 @@ The `fssample` directory now is set up as an R package with the following struct
 ```         
 fssample/
 │
-├── .gitignore
 ├── .Rbuildignore
 ├── DESCRIPTION
 ├── fssample.Rproj
@@ -80,7 +81,7 @@ Go to `data_processing.R` and refer to our template code to import, clean, and e
 
 An exemplary `data_processing.R` script is as follows:
 
-```{r data_processing}
+```{r data_processing, eval=FALSE}
 # Description ------------------------------------------------------------------
 # R script to process uploaded raw data into a tidy, analysis-ready data frame
 # Load packages ----------------------------------------------------------------
@@ -122,7 +123,6 @@ Once the data cleaning is done, run the entire `data_processing.R` script. Then,
 ```         
 fssample/
 │
-├── .gitignore
 ├── .Rbuildignore
 ├── DESCRIPTION
 ├── fssample.Rproj

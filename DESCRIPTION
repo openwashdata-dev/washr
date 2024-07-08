@@ -1,5 +1,5 @@
 Package: washr
-Title: R Data Package Development Tools for Water Sanitation and Hygiene Data
+Title: Data Package Development Tools for Water Sanitation and Hygiene Data
 Version: 0.0.1
 Authors@R: c(
     person("Mian", "Zhong", , "mzhong@ethz.ch", role = c("aut", "cre"),
