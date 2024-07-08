@@ -26,7 +26,7 @@ Imports:
 Language: en-GB
 LazyData: true
 Config/Needs/website: rmarkdown
-Date: 2024-07-02
+Date: 2024-07-08
 URL: https://github.com/openwashdata-dev/washr
 BugReports: https://github.com/openwashdata-dev/washr/issues
 Suggests: 
