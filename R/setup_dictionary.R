@@ -101,5 +101,6 @@ collect_tidydata_info <- function(data_dir){
     var_name <-c(var_name, colnames(tidydata))
     var_type <- c(var_type, sapply(tidydata, class))
   }
+  var_type <- as.character(var_type)
   return(data.frame(file_name, var_name, var_type))
 }
