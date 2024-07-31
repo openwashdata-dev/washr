@@ -25,10 +25,18 @@ in the Roxygen documentation files within R/ directory. The title and descriptio
 unchanged.
 }
 \examples{
+\dontshow{
+#' temppkg <- tempdir()
+devtools::create(temppkg, open=FALSE)
+.old_wd <- setwd(temppkg)
+}
 \dontrun{
 setup_dictionary()
 # Go to data-raw/dictionary.csv and complete column description.
 setup_roxygen()
+}
+\dontshow{
+setwd(.old_wd)
 }
 
 }

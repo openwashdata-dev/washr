@@ -4,3 +4,9 @@ load_object <- function(file) {
   load(file = file, envir = tmp_env)
   tmp_env[[ls(tmp_env)[1]]]
 }
+
+is_pkg <- function(){
+  return(file.exists(file.path(getwd(), "DESCRIPTION")) &&
+           file.exists(file.path(getwd(), "NAMESPACE"))
+  )
+}

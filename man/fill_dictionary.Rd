@@ -4,7 +4,7 @@
 \alias{fill_dictionary}
 \title{Fill in the dictionary file based on the tidy data information}
 \usage{
-fill_dictionary(dict_path, data_dir = "data/")
+fill_dictionary(dict_path, data_dir)
 }
 \arguments{
 \item{dict_path}{Path to the dictionary csvfile.}
@@ -18,8 +18,14 @@ A tibble data frame of dataset dictionary with an empty description column to be
 Fill in the dictionary file based on the tidy data information
 }
 \examples{
+\dontshow{
+.old_wd <- setwd(tempdir())
+}
 \dontrun{
-update_dictionary(dict_path = "data-raw/my-dictionary.csv")
+update_dictionary(dict_path = "data-raw/my-dictionary.csv", data = "data/")
+}
+\dontshow{
+setwd(.old_wd)
 }
 
 }

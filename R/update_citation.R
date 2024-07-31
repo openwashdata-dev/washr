@@ -11,9 +11,16 @@
 #' @export
 #'
 #' @examples
+#' \dontshow{
+#' .old_wd <- setwd(tempdir())
+#' }
 #' \dontrun{
 #'   update_citation(doi = "10.5281/zenodo.11185699")
 #' }
+#' \dontshow{
+#' setwd(.old_wd)
+#' }
+#'
 update_citation <- function(doi){
   # Creates CFF with all author roles
   mod_cff <- cffr::cff_create("DESCRIPTION",
@@ -36,8 +43,11 @@ update_citation <- function(doi){
   cffr::cff_write_citation(a_cff, file = path_cit)
 
   # Modify README and pkgdown
-  add_citation_badge(doi)
-  devtools::build_readme()
+  if(file.exists(file.path("README.Rmd"))){
+    add_citation_badge(doi)
+    devtools::build_readme()
+  }
+
   if(dir.exists(file.path("docs"))){
     devtools::build_site()
   }

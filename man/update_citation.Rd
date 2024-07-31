@@ -15,7 +15,14 @@ Object Identifier). It adds the DOI badge to the README RMarkdown file and
 re-build the README.md and pkgdown website if exists.
 }
 \examples{
+\dontshow{
+.old_wd <- setwd(tempdir())
+}
 \dontrun{
   update_citation(doi = "10.5281/zenodo.11185699")
 }
+\dontshow{
+setwd(.old_wd)
+}
+
 }
