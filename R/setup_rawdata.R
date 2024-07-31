@@ -15,8 +15,7 @@
 #' }
 #'
 setup_rawdata <- function(){
-  correct_wd <- file.exists(file.path(getwd(), "DESCRIPTION")) &&
-    file.exists(file.path(getwd(), "NAMESPACE"))
+  correct_wd <- is_pkg()
   if(correct_wd) {
     usethis::use_directory("data-raw", ignore = TRUE)
     r_path <- file.path("data-raw", "data_processing.R")

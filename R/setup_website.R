@@ -13,22 +13,34 @@
 #' @export
 #'
 #' @examples
+#' \dontshow{
+#' .old_wd <- setwd(tempdir())
+#' }
 #' \dontrun{
 #' # Set up the pkgdown website including a vignette page
 #'  setup_website(has_example = TRUE)
+#' }
+#' \dontshow{
+#' setwd(.old_wd)
 #' }
 setup_website <- function(has_example=FALSE){
   # Check on README file
   if (is_readme_available()) {
     # Add configuration file from washr templates
     name <- desc::desc_get("Package")[[1]]
-    usethis::use_template(template = "_pkgdown.yml",
-                          save_as = "./_pkgdown.yml",
-                          data = list(name = name),
-                          ignore = FALSE,
-                          open = FALSE,
-                          package = "washr")
-    usethis::use_pkgdown()
+    configpath <- "_pkgdown.yml"
+    if (file.exists(configpath) && dir.exists("docs/")) {
+      usethis::ui_info("Pkgdown folder exists. This run will update the README and pkgdown website.")
+    } else {
+      usethis::use_pkgdown(config_file = configpath)
+      file.remove(configpath)
+      usethis::use_template(template = "_pkgdown.yml",
+                            save_as = configpath,
+                            data = list(name = name),
+                            ignore = FALSE,
+                            open = FALSE,
+                            package = "washr")
+    }
 
     # Create example vignettes
     if (has_example) {
