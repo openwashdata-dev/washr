@@ -23,14 +23,15 @@ It ensures that fields such as \code{License}, \code{Language}, \code{Date}, \co
 }
 \examples{
 \dontrun{
-# Update DESCRIPTION file in the current package
+ # Update DESCRIPTION file in the current package
 update_description()
 
-# Update DESCRIPTION file in a specific package
+ # Update DESCRIPTION file in a specific package
 update_description(file = "path/to/your/package/DESCRIPTION")
 
-# Update DESCRIPTION file with a specific GitHub user
+ # Update DESCRIPTION file with a specific GitHub user
 update_description(github_user = "https://github.com/yourusername")
 }
+
 
 }

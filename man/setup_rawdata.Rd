@@ -16,7 +16,7 @@ The template assumes that the dataset name is the same as the data package name.
 }
 \examples{
 \dontrun{
-setup_rawdata()
+  setup_rawdata()
 }
 
 }

@@ -1,4 +1,4 @@
-#' Generate a citation file for the dataset.
+#' Update the citation file for the dataset.
 #'
 #' @description
 #' Create a citation *.cff file for the released dataset from a given DOI(Digital
@@ -7,15 +7,22 @@
 #'
 #' @param doi DOI(Digital Object Identifier), e.g., 10.5281/zenodo.11185699
 #'
-#' @return NULL
+#' @returns NULL. A citation .cff file is written under the root directory.
 #' @export
 #'
 #' @examples
-#' \dontrun{
-#'   add_citation(doi = "10.5281/zenodo.11185699")
+#' \dontshow{
+#' .old_wd <- setwd(tempdir())
 #' }
-add_citation <- function(doi){
-  # creates CFF with all author roles
+#' \dontrun{
+#'   update_citation(doi = "10.5281/zenodo.11185699")
+#' }
+#' \dontshow{
+#' setwd(.old_wd)
+#' }
+#'
+update_citation <- function(doi){
+  # Creates CFF with all author roles
   mod_cff <- cffr::cff_create("DESCRIPTION",
                         dependencies = FALSE,
                         keys = list("doi" = doi,
@@ -24,7 +31,7 @@ add_citation <- function(doi){
   # Remove the preferred-citation key
   mod_cff$`preferred-citation` <- NULL
 
-  # writes the CFF file
+  # Writes the CFF file
   cffr::cff_write(mod_cff)
 
   # Now write a CITATION file from the CITATION.cff file
@@ -36,21 +43,24 @@ add_citation <- function(doi){
   cffr::cff_write_citation(a_cff, file = path_cit)
 
   # Modify README and pkgdown
-  add_citation_badge(doi)
-  devtools::build_readme()
-  if(fs::dir_exists(fs::path("docs"))){
+  if(file.exists(file.path("README.Rmd"))){
+    add_citation_badge(doi)
+    devtools::build_readme()
+  }
+
+  if(dir.exists(file.path("docs"))){
     devtools::build_site()
   }
 
   # By last, read the citation
-  cat(readLines(path_cit), sep = "\n")
+   usethis::ui_todo("Proofread your citation file at {usethis::ui_value(path_cit)}")
 }
 
 add_citation_badge<- function(doi){
   badge_icon <- paste0("https://zenodo.org/badge/DOI/", doi, ".svg")
   zenodo_link <- paste0("https://zenodo.org/doi/", doi)
   badge_str <- sprintf("[![DOI](%s)](%s)", badge_icon, zenodo_link)
-  readme_rmd_path <- fs::path("README", ext = "Rmd")
+  readme_rmd_path <- file.path("README.Rmd")
   readme_rmd <- readLines(readme_rmd_path)
 
   i <- 1
