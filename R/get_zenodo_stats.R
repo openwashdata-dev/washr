@@ -16,8 +16,33 @@ get_record_by_doi <- function(doi){
   return(record)
 }
 
-record_stats
-# unique view numbers
-record$stats$unique_views
-# unique downloads numbers
-record$stats$unique_downloads
+
+get_zenodo_stats <- function(records_list){
+  pkgname <- c()
+  doi <- c()
+  unique_downloads <- c()
+  unique_views <- c()
+
+  for (package in owd) {
+    pkg <- sub("-v[0-9]\\.[0-9]\\.[0-9]\\.zip", "", basename(package$files[[1]]$key))
+    pkgname <- c(pkgname, pkg)
+    doi <- c(doi, package$doi)
+    unique_downloads <- c(unique_downloads, package$stats$unique_downloads)
+    unique_views <- c(unique_views, package$stats$unique_views)
+  }
+
+  zenodo_stats <- data.frame(
+    pkg_name = pkgname,
+    doi = doi,
+    unique_downloads = unique_downloads,
+    unique_views = unique_views,
+    download_per_view = unique_downloads/unique_views
+  )
+  return(zenodo_stats)
+}
+
+get_zenodo_community_stats <- function(name){
+  records_list <- get_community_records(name)
+  community_stats <- get_zenodo_stats(records_list)
+  return(community_stats)
+}
