@@ -2,7 +2,7 @@
 % Please edit documentation in R/setup_readme.R
 \name{setup_readme}
 \alias{setup_readme}
-\title{Generate the README Rmarkdown file}
+\title{Generate the README RMarkdown file}
 \usage{
 setup_readme()
 }
