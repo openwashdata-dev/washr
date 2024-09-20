@@ -2,5 +2,5 @@ pandoc: 3.1.11
 pkgdown: 2.1.1
 pkgdown_sha: ~
 articles:
-  washr-get-started: washr-get-started.html
-last_built: 2024-09-20T11:55Z
+  washr: washr.html
+last_built: 2024-09-20T13:29Z
