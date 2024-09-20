@@ -2,3 +2,29 @@ url: ~
 template:
   bootstrap: 5
 
+reference:
+- title: "Using washr"
+
+- subtitle: "Setting up your data repository"
+  contents:
+  - setup_rawdata
+
+- subtitle: "Documenting your data"
+  desc: "Helper functions to document both your dataset(s) and functions"
+  contents:
+  - setup_dictionary
+  - fill_dictionary
+  - setup_roxygen
+  - generate_roxygen_docs
+
+- subtitle: "Adding metadata"
+  desc: "Helper functions to add metadata"
+  contents:
+  - add_citation
+  - update_description
+
+- subtitle: "Publishing your data"
+  desc: "Helper functions to communicate your data"
+  contents:
+  - setup_readme
+  - setup_website
