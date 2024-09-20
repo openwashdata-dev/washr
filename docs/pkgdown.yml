@@ -4,3 +4,25 @@ pkgdown_sha: ~
 articles:
   washr-get-started: washr-get-started.html
 last_built: 2024-09-20T11:38Z
+
+reference:
+- title: "Getting started"
+  contents:
+  - setup_rawdata
+- title: "Documenting your data"
+  desc: "Helper functions to document both your dataset(s) and functions"
+  contents:
+  - setup_dictionary
+  - fill_dictionary
+  - setup_roxygen
+  - generate_roxygen_docs
+- title: "Adding metadata"
+  desc: "Helper functions to add metadata"
+  contents:
+  - add_citation
+  - update_description
+- title: "Publishing your data"
+  desc: "Helper functions to communicate your data"
+  contents:
+  - setup_readme
+  - setup_website

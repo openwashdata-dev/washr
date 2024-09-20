@@ -8,13 +8,14 @@
 [![R-CMD-check](https://github.com/openwashdata-dev/washr/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/openwashdata-dev/washr/actions/workflows/R-CMD-check.yaml)
 <!-- badges: end -->
 
-The goal of washr is to provide tools to make [openwashdata data
+The goal of `washr` is to provide tools to make the [openwashdata data
 package](https://openwashdata.org/pages/gallery/data/) workflow
 consistent and efficient.
 
 ## Installation
 
-You can install the development version of washr from
+In the near future, we’re planning to release `washr` on CRAN. For now,
+you can install the development version from
 [GitHub](https://github.com/) with:
 
 ``` r
@@ -22,6 +23,14 @@ You can install the development version of washr from
 devtools::install_github("openwashdata-dev/washr")
 ```
 
-## Workflow
+## How to use washr
 
-To learn more, please refer to the detailed vignette: .
+To learn more about `washr`, check out the ‘Get Started’ page. This,
+along with the ‘Reference’ page, will give you a good overview of
+`washr`’s current capabilities and limitations.
+
+If you decide to use `washr` for publishing your data (which we hope you
+will!), take a look at our detailed manual. It’s regularly updated and
+walks you through the entire process step-by-step. The manual is your
+best bet for the most up-to-date information, as we’re constantly
+improving it.
