@@ -20,7 +20,7 @@ reference:
 - subtitle: "Adding metadata"
   desc: "Helper functions to add metadata"
   contents:
-  - add_citation
+  - update_citation
   - update_description
 
 - subtitle: "Publishing your data"
