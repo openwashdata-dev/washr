@@ -26,7 +26,7 @@ unchanged.
 }
 \examples{
 \dontshow{
-#' temppkg <- tempdir()
+temppkg <- tempdir()
 devtools::create(temppkg, open=FALSE)
 .old_wd <- setwd(temppkg)
 }

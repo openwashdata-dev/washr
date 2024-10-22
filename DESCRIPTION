@@ -26,10 +26,9 @@ Imports:
     usethis (>= 2.2.3),
     utils (>= 4.3.3)
 Language: en-GB
-LazyData: true
 Config/Needs/website: rmarkdown
 Date: 2024-10-22
-URL: https://github.com/openwashdata-dev/washr
+URL: https://openwashdata-dev.github.io/washr/
 BugReports: https://github.com/openwashdata-dev/washr/issues
 Suggests: 
     knitr,
