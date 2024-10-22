@@ -35,7 +35,7 @@ setup_dictionary <- function() {
   # Check dictionary csvfile existence
   dict_path <- file.path("data-raw", "dictionary.csv")
   if(no_dict(dict_path)){
-    fill_dictionary(data_dir = "data", dict_path)
+    dictionary <- fill_dictionary(data_dir = "data", dict_path)
   } else {
     usethis::ui_stop(paste("The dictionary CSV file", dict_path, "already exists!"))
   }
@@ -101,5 +101,6 @@ collect_tidydata_info <- function(data_dir){
     var_name <-c(var_name, colnames(tidydata))
     var_type <- c(var_type, sapply(tidydata, class))
   }
+  var_type <- as.character(var_type)
   return(data.frame(file_name, var_name, var_type))
 }
