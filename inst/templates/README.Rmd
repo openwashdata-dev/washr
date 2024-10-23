@@ -57,6 +57,11 @@ library(kableExtra)
 Alternatively, you can download the individual datasets as a CSV or XLSX
 file from the table below.
 
+1.  Click Download CSV. A window opens that displays the CSV in
+    your browser.
+2.  Right-click anywhere inside the window and select "Save Page As...".
+3.  Save the file in a folder of your choice.
+
 ```{r, echo=FALSE, message=FALSE, warning=FALSE}
 
 extdata_path <- "https://github.com/openwashdata/{{{packagename}}}/raw/main/inst/extdata/"
@@ -83,8 +88,9 @@ library({{{packagename}}})
 
 ### {{{dataname}}}
 
-The dataset `{{{dataname}}}` contains data about ...
-It has `r nrow({{{dataname}}})` observations and `r ncol({{{dataname}}})` variables
+The dataset `{{{dataname}}}` contains data about ... It has
+`r nrow({{{dataname}}})` observations and `r ncol({{{dataname}}})`
+variables
 
 ```{r}
 {{{dataname}}} |> 
@@ -104,7 +110,6 @@ readr::read_csv("data-raw/dictionary.csv") |>
   kableExtra::scroll_box(height = "200px")
 ```
 
-
 ## Example
 
 ```{r}
@@ -113,11 +118,10 @@ library({{{packagename}}})
 # Provide some example code here
 ```
 
-
 ## License
 
 Data are available as
-[CC-BY](https://github.com/openwashdata/{{{packagename}}}/blob/main/LICENSE.md).
+[CC-BY](https://github.com/openwashdata/%7B%7B%7Bpackagename%7D%7D%7D/blob/main/LICENSE.md).
 
 ## Citation
 
